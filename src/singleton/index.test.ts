@@ -1,5 +1,5 @@
-import { ConsoleLogger } from './example'
-jest.mock('./example')
+import { ConsoleLogger } from '.'
+jest.mock('.')
 
 test('logger should instance only once', () => {
   const loggerOne = ConsoleLogger.getInstance()
