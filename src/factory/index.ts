@@ -44,25 +44,23 @@ export class TourismCar extends Car {
   }
 }
 
-interface CarFactory {
-
+export interface CarFactory {
   createCar: (horsepower: number) => Car
-
 }
 
-class HyperCarFactory implements CarFactory {
+export class HyperCarFactory implements CarFactory {
   createCar (horsepower: number): Car {
     return new HyperCar(horsepower)
   }
 }
 
-class TourismCarFactory implements CarFactory {
+export class TourismCarFactory implements CarFactory {
   createCar (horsepower: number): Car {
     return new TourismCar(horsepower)
   }
 }
 
-class CarDealerShip implements CarFactory {
+export class CarDealerShip implements CarFactory {
   createCar (horsepower: number): Car {
     if (horsepower >= 300) return new HyperCar(horsepower)
 
