@@ -1,0 +1,39 @@
+{
+  "name": "software-patterns",
+  "version": "0.0.0",
+  "description": "Software patterns with examples",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "singleton": "npx ts-node ./src/singleton/index.ts",
+    "tsc": "tsc",
+    "lint": "eslint ./src --fix"
+  },
+  "keywords": [
+    "patterns",
+    "toolkit",
+    "software",
+    "architecture"
+  ],
+  "author": "narfware",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-env": "^7.23.6",
+    "@babel/preset-typescript": "^7.23.3",
+    "@types/jest": "^29.5.11",
+    "@types/node": "^20.10.5",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "eslint": "^8.56.0",
+    "eslint-config-standard-with-typescript": "^43.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.5.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "nodemon": "^3.0.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "jest": "^29.7.0",
+    "winston": "^3.11.0"
+  }
+}
