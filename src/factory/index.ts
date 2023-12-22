@@ -44,23 +44,29 @@ export class TourismCar extends Car {
   }
 }
 
-export interface CarFactory {
-  createCar: (horsepower: number) => Car
+export abstract class CarFactory {
+  abstract createCar (horsepower: number): Car
+
+  someOperation (horsepower: number): void {
+    const car = this.createCar(horsepower)
+
+    car.something()
+  }
 }
 
-export class HyperCarFactory implements CarFactory {
+export class HyperCarFactory extends CarFactory {
   createCar (horsepower: number): Car {
     return new HyperCar(horsepower)
   }
 }
 
-export class TourismCarFactory implements CarFactory {
+export class TourismCarFactory extends CarFactory {
   createCar (horsepower: number): Car {
     return new TourismCar(horsepower)
   }
 }
 
-export class CarDealerShip implements CarFactory {
+export class CarDealerShip extends CarFactory {
   createCar (horsepower: number): Car {
     if (horsepower >= 300) return new HyperCar(horsepower)
 
@@ -76,11 +82,8 @@ class MyApplication {
   }
 
   public execute (): void {
-    const car = this.factory.createCar(252)
-    const anotherCar = this.factory.createCar(550)
-
-    car.something() // im a tourism car
-    anotherCar.something() // im a hypercar
+    this.factory.someOperation(252) // im a tourism car
+    this.factory.someOperation(550) // im a hypercar
   }
 }
 
