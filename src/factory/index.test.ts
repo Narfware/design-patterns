@@ -1,4 +1,5 @@
-import { CarDealerShip, HyperCar, TourismCar } from '.'
+import { HyperCar, TourismCar } from './cars'
+import { CarDealerShip } from './factories'
 
 test('should be an instance of TourismCar', () => {
   const factory = new CarDealerShip()
