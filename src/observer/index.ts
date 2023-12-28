@@ -9,8 +9,8 @@ class SayHello {
 
 class MyEvent extends Event {
   static readonly EVENT_NAME = 'MY_EVENT'
-  private readonly name: string
-  private readonly phone: number
+  readonly name: string
+  readonly phone: number
 
   constructor ({ name, phone }: { name: string, phone: number }) {
     super({ eventName: MyEvent.EVENT_NAME })
@@ -19,7 +19,9 @@ class MyEvent extends Event {
   }
 
   public toPrimitives (): { name: string, phone: number } {
-    return { name: this.name, phone: this.phone }
+    const { name, phone } = this
+
+    return { name, phone }
   }
 }
 
@@ -33,7 +35,7 @@ class MyEventSubscriber implements EventSubscriber<MyEvent> {
   }
 
   on (event: MyEvent): void {
-    const { name } = event.toPrimitives()
+    const { name } = event
 
     this.sayHello.execute({ name })
   }
