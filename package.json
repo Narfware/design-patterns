@@ -7,6 +7,7 @@
     "test": "jest",
     "singleton": "npx ts-node ./src/singleton/index.ts",
     "factory": "npx ts-node ./src/factory/index.ts",
+    "observer": "npx ts-node ./src/observer/index.ts",
     "tsc": "tsc",
     "lint": "eslint ./src --fix"
   },
