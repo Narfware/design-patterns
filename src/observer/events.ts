@@ -7,7 +7,7 @@ export class MyEvent extends Event {
   readonly phone: number
 
   constructor ({ name, phone }: { name: string, phone: number }) {
-    super({ eventName: MyEvent.EVENT_NAME })
+    super()
     this.name = name
     this.phone = phone
   }
@@ -17,15 +17,21 @@ export class MyEvent extends Event {
 
     return { name, phone }
   }
+
+  public eventName (): string {
+    return MyEvent.EVENT_NAME
+  }
 }
 
 export class MyEventSubscriber implements EventSubscriber<MyEvent> {
+  private readonly events = new Set<string>([MyEvent.EVENT_NAME])
+
   constructor (private readonly sayHello: SayHello) {
     this.sayHello = sayHello
   }
 
   subscribedTo (): Set<string> {
-    return new Set<string>([MyEvent.EVENT_NAME])
+    return this.events
   }
 
   on (event: MyEvent): void {

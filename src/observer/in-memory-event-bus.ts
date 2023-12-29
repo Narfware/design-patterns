@@ -4,7 +4,7 @@ export class InMemoryEventBus implements EventBus {
   private readonly subscribers = new Map<string, Set<EventSubscriber<Event>>>()
 
   public publish (events: Event[]): void {
-    events.forEach(event => { this.handleEvent(event, this.subscribers.get(event.eventName)) })
+    events.forEach(event => { this.handleEvent(event, this.subscribers.get(event.eventName())) })
   }
 
   public addSubscribers (subscribers: Set<EventSubscriber<Event>>): void {
@@ -22,7 +22,7 @@ export class InMemoryEventBus implements EventBus {
         return
       }
 
-      this.subscribers.set(eventName, new Set<EventSubscriber<Event>>().add(subscriber))
+      this.subscribers.set(eventName, new Set<EventSubscriber<Event>>([subscriber]))
     })
   }
 

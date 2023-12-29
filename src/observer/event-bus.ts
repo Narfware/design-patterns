@@ -1,11 +1,6 @@
 export abstract class Event {
   static readonly EVENT_NAME: string
-  readonly eventName: string
-
-  constructor ({ eventName }: { eventName: string }) {
-    this.eventName = eventName
-  }
-
+  abstract eventName (): string
   abstract toPrimitives (): any
 }
 
