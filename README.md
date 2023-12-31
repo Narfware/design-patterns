@@ -9,6 +9,7 @@ This repository contains examples of various design patterns implemented in Type
   - [Singleton Pattern](#singleton-pattern)
   - [Factory Pattern](#factory-pattern)
   - [Observer Pattern](#observer-pattern)
+  - [Strategy Pattern](#strategy-pattern)
 
 
 ## Introduction
