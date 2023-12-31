@@ -2,20 +2,20 @@ import { CarDecoder, type Car, type VINData } from './car'
 import { AsianStrategy, EuropeanStrategy, NullStrategy, GlobalStrategy } from './strategies'
 
 export abstract class CarFactory {
-  abstract createCar (ean: string): Car
+  abstract createCar (VIN: string): Car
 
-  public retrieveVINData (ean: string): VINData {
-    const car = this.createCar(ean)
+  public retrieveVINData (VIN: string): VINData {
+    const car = this.createCar(VIN)
 
     return car.retrieveVINData()
   }
 }
 
 export class VINDecoderFactory extends CarFactory {
-  public createCar (ean: string): Car {
+  public createCar (VIN: string): Car {
     const nullStrategy = new NullStrategy()
 
-    const car = new CarDecoder(ean, nullStrategy)
+    const car = new CarDecoder(VIN, nullStrategy)
 
     if (car.isGlobalCar()) car.assignStrategy(new GlobalStrategy())
     if (car.isEuropeanCar()) car.assignStrategy(new EuropeanStrategy())
