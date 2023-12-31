@@ -1,6 +1,6 @@
 export const UNKNOWN = 'UNKNOWN'
 
-export interface CarStrategy {
+export interface VINDecoderStrategy {
   isValidVIN(vin: string): boolean
   extractManufacturer(vin: string): string
   extractYear(vin: string): number
@@ -11,7 +11,7 @@ export interface CarStrategy {
   extractTransmission (vin: string): string
 }
 
-export class GlobalStrategy implements CarStrategy {
+export class GlobalVINDecoderStrategy implements VINDecoderStrategy {
   extractManufacturer (vin: string): string {
     return vin.substring(0, 2)
   }
@@ -45,7 +45,7 @@ export class GlobalStrategy implements CarStrategy {
   }
 }
 
-export class AsianStrategy implements CarStrategy {
+export class AsianVINDecoderStrategy implements VINDecoderStrategy {
   extractManufacturer (vin: string): string {
     return UNKNOWN
   }
@@ -79,7 +79,7 @@ export class AsianStrategy implements CarStrategy {
   }
 }
 
-export class EuropeanStrategy implements CarStrategy {
+export class EuropeanVINDecoderStrategy implements VINDecoderStrategy {
   extractManufacturer (vin: string): string {
     return UNKNOWN
   }
@@ -113,7 +113,7 @@ export class EuropeanStrategy implements CarStrategy {
   }
 }
 
-export class NullStrategy implements CarStrategy {
+export class NullStrategy implements VINDecoderStrategy {
   extractManufacturer (vin: string): string {
     return UNKNOWN
   }
